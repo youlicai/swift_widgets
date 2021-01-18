@@ -8,7 +8,7 @@
 import UIKit
 
 class TUILabel: UILabel {
-    typealias block = (UIView) -> ()
+    typealias block = (UILabel) -> ()
     var completion: block = {view in
     }
     override init(frame:CGRect) {
@@ -22,11 +22,16 @@ class TUILabel: UILabel {
     @objc func click(sender:UIGestureRecognizer){
         completion(self)
     }
-    func OnClick(completion: @escaping(UIView)->()){
+    func OnClick(completion: @escaping(UILabel)->()){
         let singleTapGesture = UITapGestureRecognizer(target: self,action:#selector(click(sender:)))
         self.addGestureRecognizer(singleTapGesture)
         self.isUserInteractionEnabled = true
         self.completion=completion
+    }
+    
+    func fontstyle(size:CGFloat,color:UIColor,weight:UIFont.Weight){
+        font=UIFont.systemFont(ofSize: size, weight: weight)
+        self.textColor=color
     }
 }
 

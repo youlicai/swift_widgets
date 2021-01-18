@@ -7,10 +7,10 @@
 
 import UIKit
 
-class TIcon: UIView {
+class TIcon: TUIView {
 
     var icon:TUIImageView!
-    var icon_text:UILabel!
+    var icon_text:TUILabel!
     override init(frame:CGRect) {
         super.init(frame:frame)
 
@@ -21,16 +21,14 @@ class TIcon: UIView {
     }
     
     func setupSubView() {
-        icon=TUIImageView(frame: CGRect(x: W(value: 2), y: 0, width: self.frame.width-W(value: 4), height: self.frame.width-W(value: 4)))
-        icon_text=UILabel(frame: CGRect(x: 0, y: icon.frame.maxY+W(value: 2), width: self.frame.width, height: self.frame.height-self.frame.width+W(value: 2)))
-
+        icon=TUIImageView(frame: CGRect(x: W(value: 2.5), y: 0, width: self.frame.width-W(value: 5), height: self.frame.width-W(value: 5)))
+        icon_text=TUILabel(frame: CGRect(x: 0, y: icon.frame.maxY+W(value: 2), width: self.frame.width, height:W(value: 3)))
+//        icon.backgroundColor=UIColor.blue
         icon_text.textAlignment = NSTextAlignment.center;
-        icon_text.font=UIFont.systemFont(ofSize: W(value:3.5), weight: UIFont.Weight.heavy)
+        icon_text.fontstyle(size: W(value:3.5), color: UIColor.black, weight: UIFont.Weight.heavy)
         addSubview(icon)
         addSubview(icon_text)
-        icon.OnClick { (this) in
-            
-        }
+        frame=CGRect(x: self.frame.minX, y: self.frame.minY, width: self.frame.width, height: icon_text.frame.maxY)
     }
     
     func setTitle(title:String,color:UIColor){

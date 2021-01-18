@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TUIBotton:UIButton {
+class TUIButton:UIButton {
     typealias block = (UIView) -> ()
     var completion: block = {view in
     }

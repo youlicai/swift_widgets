@@ -6,10 +6,11 @@
 //
 import UIKit
 
-class TSlideItem: UIView {
+class TSlideItem: TUIView {
 
-    var text:TUI!
+    var text:TUILabel!
     var line_:TUIView!
+    var color:UIColor!
     override init(frame:CGRect) {
         super.init(frame:frame)
 
@@ -20,24 +21,28 @@ class TSlideItem: UIView {
     }
     
     func setupSubView() {
-//        icon=TUIImageView(frame: CGRect(x: W(value: 2), y: 0, width: self.frame.width-W(value: 4), height: self.frame.width-W(value: 4)))
-//        icon_text=UILabel(frame: CGRect(x: 0, y: icon.frame.maxY+W(value: 2), width: self.frame.width, height: self.frame.height-self.frame.width+W(value: 2)))
-//
-//        icon_text.textAlignment = NSTextAlignment.center;
-//        icon_text.font=UIFont.systemFont(ofSize: W(value:3.5), weight: UIFont.Weight.heavy)
-//        addSubview(icon)
-//        addSubview(icon_text)
-//        icon.OnClick { (this) in
-//
-//        }
+        text=TUILabel(frame: CGRect(x: W(value: 2), y: 0, width: self.frame.width-W(value: 4), height: self.frame.height-W(value: 2)))
+        addSubview(text)
+
     }
     
     func setTitle(title:String,color:UIColor){
-//        icon_text.text=title
-//        icon_text.textColor=color
+        self.color=color
+        text.text=title
+        text.textColor=color
+        text.sizeToFit()
+        text.frame=CGRect(x: (self.frame.width-text.frame.width)/2, y: 0, width: text.frame.width, height: text.frame.height)
+        line_=TUIView(frame: CGRect(x: W(value: 3), y: text.frame.maxY+W(value: 2), width: self.frame.width-W(value: 6), height: W(value: 0.8)))
+        line_.backgroundColor=color
+        frame=CGRect(x:self.frame.minX, y: self.frame.minY, width: self.frame.width, height: text.frame.height+line_.frame.height)
     }
     
-    func setImage(name:String){
-        icon.image=UIImage(named: name)
+    func show_line(){
+        addSubview(line_)
     }
+    
+    func hidden_line(){
+        line_.removeFromSuperview()
+    }
+
 }
