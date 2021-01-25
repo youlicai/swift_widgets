@@ -23,7 +23,6 @@ class TSlideItem: TUIView {
     func setupSubView() {
         text=TUILabel(frame: CGRect(x: W(value: 2), y: 0, width: self.frame.width-W(value: 4), height: self.frame.height-W(value: 2)))
         addSubview(text)
-
     }
     
     func setTitle(title:String,color:UIColor){
