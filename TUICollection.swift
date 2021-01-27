@@ -91,8 +91,8 @@ class TUICollection: UIView , UICollectionViewDelegate, UICollectionViewDataSour
     
     func load_data(){
         for _ in 1...500 {
-            let testmodel=TestModel(s:"rrrr")
-            data_array.append(testmodel)
+//            let testmodel=TestModel()
+//            data_array.append(testmodel)
         }
         
     }
